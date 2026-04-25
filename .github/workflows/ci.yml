@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Hello
-        uses: echo "CI pipeline lives on ${{ github.sha }}"
+        uses: echo "CI pipeline lives on {owner}/{repo}[/path]@{ref}."
 
       - name: Check required Docs are presetn
         run: |
