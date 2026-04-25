@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Hello
-        uses: echo "CI pipeline lives on {bharathravelli-419}/{spendwise}[/workflows/ci.yml]@{main}."
+        uses: echo "CI pipeline lives on {bharathravelli-419/spendwise/workflows/ci.yml@main}."
 
       - name: Check required Docs are presetn
         run: |
