@@ -42,7 +42,8 @@ jobs:
         run: ./gradlew build
 
   check-files:
-      - name: Check required Docs are presetn
+    steps:
+      - name: Check required Docs are present
         run: |
           test -f README.md
           test -f .gitignore
