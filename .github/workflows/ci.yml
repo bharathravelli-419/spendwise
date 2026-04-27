@@ -37,16 +37,11 @@ jobs:
           cache: 'gradle'
       - name: Grant Gradle Exec
         run: chmod +x ./gradlew
-  lint-and-hello:
-    name: Lint + Hello world
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      
+      - name: Build and Test
+        run: ./gradlew build
 
-      - name: Hello
-        run: echo "Hello from GH CI"
-
+  check-files:
       - name: Check required Docs are presetn
         run: |
           test -f README.md
