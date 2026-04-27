@@ -42,6 +42,7 @@ jobs:
         run: ./gradlew build
 
   check-files:
+    runs-on: ubuntu-latest
     steps:
       - name: Check required Docs are present
         run: |
