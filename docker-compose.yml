@@ -1,0 +1,35 @@
+services:
+  transaction-service:
+    build: ./apps/transaction-service
+    depends_on:
+      postgres: { condition: service_healthy }
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/spendwise
+      SPRING_DATASOURCE_USERNAME: spendwise
+      SPRING_DATASOURCE_PASSWORD: spendwise
+    ports: ["8085:8085"]
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: spendwise
+      POSTGRES_PASSWORD: spendwise
+      POSTGRES_DB: spendwise
+    ports:
+      - "5432:5432"
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U spendwise"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+  adminer:
+    image: adminer
+    ports:
+      - "8082:8080"
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+volumes:
+  pgdata:
