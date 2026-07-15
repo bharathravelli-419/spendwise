@@ -23,7 +23,7 @@ jobs:
   backend:
     name: backend - transation - service
     strategy:
-      fail-fast:false
+      fail-fast: false
       matrix:
         service: [transaction-service]
     runs-on: ubuntu-latest
