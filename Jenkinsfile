@@ -3,6 +3,9 @@ pipeline {
     options {
         timestamps(); disableConcurrentBuilds()
     }
+    environment {
+    TESTCONTAINERS_RYUK_DISABLED = 'true'
+}
     stages {
         stage('Checkout'){
             steps {checkout scm}
