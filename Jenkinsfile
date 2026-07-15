@@ -10,14 +10,14 @@ pipeline {
         stage('Checkout'){
             steps {checkout scm}
         }
-        // stage('Backend build & test'){
-        //     steps{
-        //         dir('apps/transaction-service'){
-        //             sh './gradlew --no-daemon clean check build'
-        //         }
-        //     }
+        stage('Backend build & test'){
+            steps{
+                dir('apps/transaction-service'){
+                    sh './gradlew --no-daemon clean check build'
+                }
+            }
             
-        // }
+        }
         stage('Frontend build'){
             steps{
                 dir('apps/web'){
