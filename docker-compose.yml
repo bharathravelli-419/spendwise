@@ -1,4 +1,20 @@
 services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    user: root
+    ports: 
+      - "8081:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    # FIX: Allows Testcontainers to talk to your host machine's Docker daemon
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
   transaction-service:
     build: ./apps/transaction-service
     depends_on:
@@ -33,3 +49,4 @@ services:
       - "6379:6379"
 volumes:
   pgdata:
+  jenkins_home:
