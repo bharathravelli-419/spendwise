@@ -59,11 +59,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: apps/web/package-lock.json
+          cache: 'npm'
+          # FIX: Directs GitHub to look inside the subfolder for the dependency layout
+          cache-dependency-path: 'apps/web/package-lock.json'
       - working-directory: apps/web
         run: |
           npm ci
