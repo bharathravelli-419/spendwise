@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Backend build & test'){
             steps{
-                dir('/apps/transaction-service'){
+                dir('apps/transaction-service'){
                     sh './gradlew --no-daemon clean check build'
                 }
             }
