@@ -62,7 +62,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
           # FIX: Directs GitHub to look inside the subfolder for the dependency layout
           cache-dependency-path: 'apps/web/package-lock.json'
