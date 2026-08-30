@@ -20,9 +20,9 @@ repositories {
 	mavenCentral()
 }
 dependencyManagement {
-   imports {
-     mavenBom "org.testcontainers:testcontainers-bom:1.19.8"
-   }
+//   imports {
+//     mavenBom "org.testcontainers:testcontainers-bom:1.19.8"
+//   }
 }
 dependencies {
 //	implementation 'org.springframework.boot:spring-boot-starter-actuator'
