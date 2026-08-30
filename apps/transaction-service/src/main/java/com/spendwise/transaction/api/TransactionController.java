@@ -23,7 +23,7 @@ public class TransactionController {
 
     @PostMapping
     public ResponseEntity<TransactionResponse> create(
-        @RequestHeader(value = "Idempotency-Key", required = false) String idemKey,
+        @RequestHeader(value = "Idempotency-Key", required = true) String idemKey,
         @Valid @RequestBody CreateTransactionRequest request
         ){
         //Idempotency key in-memory for now.(Redis later)

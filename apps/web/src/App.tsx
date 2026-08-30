@@ -1,21 +1,10 @@
-import { useEffect, useState } from "react";
+import './App.css';
+import AddTransaction from "./components/AddTransaction/AddTransaction";
 
 function App(){
-  const [state, setState] = useState('');
-  useEffect(()=>{
-    fetch('/api/v1/health/ping')
-    .then(async res => {
-      if(res.ok){
-       return await res.json();
-      }
-    })
-    .then(data =>{
-      setState(data);
-    })
-  },[])
   return (
     <>
-    {JSON.stringify(state)}
+    <AddTransaction />
     </>
   );
 }

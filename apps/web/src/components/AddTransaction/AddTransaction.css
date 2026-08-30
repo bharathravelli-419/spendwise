@@ -1,0 +1,87 @@
+.add-transaction-container {
+    /* 1. Leverage local variables for easy scaling/reusability */
+    --form-font-size: 1rem;
+    --form-padding: 1.5rem;
+    --input-margin: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* 2. Fluid layout architecture */
+    width: 100%;
+    max-width: 24rem; /* Safe maximum width on large viewports */
+    font-size: var(--form-font-size);
+    padding: var(--form-padding);
+    box-sizing: border-box; /* Ensures padding does not break layout widths */
+    
+    /* 3. Layout Fixes */
+    border-radius: 10px; /* Fixed: Removed 'solid black' syntax */
+    border: 5px solid #090e13;
+
+    /* 4. Text status styling alignment */
+    span, p {
+        margin-bottom: 0.5rem;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .transaction-input-container {
+        position: relative;
+        width: 100%; /* Spans full container width safely */
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem; /* Replaced manual text margin with a clean flexible layout gap */
+        
+        label {
+            font-size: 0.85em;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: var(--input-margin);
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Crucial so padding doesn't overflow the input box */
+            
+            &:focus {
+                outline: 2px solid #0056b3;
+                border-color: transparent;
+            }
+        }
+    }
+
+    button {
+        width: 100%; /* Easier touch targets for mobile devices and small UI viewports */
+        padding: 0.6em 1em;
+        border-radius: 5px;
+        border: none;
+        background-color: #090e13;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease; /* Smooth hover transition */
+
+        &:hover {
+            background-color: #0056b3;
+        }
+
+        &:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    }
+
+    /* 5. Compressed modifier class variant for Chat Windows */
+    &.is-compressed {
+        --form-font-size: 0.85rem; /* Shrinks fonts systematically */
+        --form-padding: 0.75rem;   /* Compresses the outer shell spacing */
+        --input-margin: 0.5rem;    /* Pulls form inputs closer together */
+        border-width: 2px;         /* Slims down structural border weight */
+        max-width: 100%;           /* Conforms strictly to chat bubble dimensions */
+    }
+}

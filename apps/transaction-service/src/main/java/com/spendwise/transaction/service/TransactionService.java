@@ -5,9 +5,8 @@ import com.spendwise.transaction.api.dto.CreateTransactionRequest;
 import com.spendwise.transaction.api.dto.TransactionResponse;
 import com.spendwise.transaction.domain.Transaction;
 import com.spendwise.transaction.respository.TransactionRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -25,7 +24,7 @@ public class TransactionService {
         return transactionMapper.toResponse(transactionRepository.save(tx));
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public TransactionResponse get(UUID userId, UUID id){
         Transaction tx = transactionRepository.findById(id)
             .filter(t -> t.getUserId().equals(userId))

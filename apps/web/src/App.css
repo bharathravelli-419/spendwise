@@ -1,0 +1,9 @@
+body{
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+    background-color: white;
+    color: #111;
+}
