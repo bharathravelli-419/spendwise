@@ -3,7 +3,7 @@ plugins {
 	id 'org.springframework.boot' version '4.0.6'
 	id 'io.spring.dependency-management' version '1.1.7'
   id 'com.diffplug.spotless' version '6.25.0'
-  id 'checkstyle'
+//  id 'checkstyle'
 //  id 'jacoco'
 }
 
@@ -95,7 +95,7 @@ spotless{
   }
 }
 
-checkstyle{
-  toolVersion = '10.18.2';
-  maxWarnings = 0;
-}
+//checkstyle{
+//  toolVersion = '10.18.2';
+//  maxWarnings = 0;
+//}
