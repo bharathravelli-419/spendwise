@@ -1,0 +1,27 @@
+ .transaction-input-container {
+        position: relative;
+        width: 100%; /* Spans full container width safely */
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem; /* Replaced manual text margin with a clean flexible layout gap */
+        
+        label {
+            font-size: 0.85em;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: var(--input-margin);
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Crucial so padding doesn't overflow the input box */
+            
+            &:focus {
+                outline: 2px solid #0056b3;
+                border-color: transparent;
+            }
+        }
+}

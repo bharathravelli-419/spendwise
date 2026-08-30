@@ -1,3 +1,4 @@
+import './CustomInput.css';
 
 interface CustomInputType {
     id :string;
