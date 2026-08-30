@@ -20,9 +20,9 @@ repositories {
 	mavenCentral()
 }
 dependencyManagement {
-//   imports {
-//     mavenBom "org.testcontainers:testcontainers-bom:1.19.8"
-//   }
+   imports {
+     mavenBom "org.testcontainers:testcontainers-bom:1.19.8"
+   }
 }
 dependencies {
 //	implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -77,16 +77,16 @@ dependencies {
 
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-//  testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//  testImplementation 'org.testcontainers:testcontainers'
-//  testImplementation 'org.testcontainers:junit-jupiter'
-//  testImplementation 'org.testcontainers:postgresql'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'org.testcontainers:testcontainers'
+  testImplementation 'org.testcontainers:junit-jupiter'
+  testImplementation 'org.testcontainers:postgresql'
 
 }
 
-//tasks.named('test') {
-//	useJUnitPlatform()
-//}
+tasks.named('test') {
+	useJUnitPlatform()
+}
 
 spotless{
   java { googleJavaFormat('1.23.0');
