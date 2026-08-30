@@ -12,6 +12,4 @@ public record TransactionResponse(
     String currency,
     String direction,
     String note,
-    OffsetDateTime occurredAt
-) {
-}
+    OffsetDateTime occurredAt) {}

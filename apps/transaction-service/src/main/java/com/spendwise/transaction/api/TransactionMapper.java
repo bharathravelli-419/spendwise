@@ -9,9 +9,10 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface TransactionMapper {
 
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "userId", ignore = true)
-    @Mapping(target = "createdAt", ignore = true)
-    Transaction toEntity(CreateTransactionRequest req);
-    TransactionResponse toResponse(Transaction tx);
+  @Mapping(target = "id", ignore = true)
+  @Mapping(target = "userId", ignore = true)
+  @Mapping(target = "createdAt", ignore = true)
+  Transaction toEntity(CreateTransactionRequest req);
+
+  TransactionResponse toResponse(Transaction tx);
 }
