@@ -1,14 +1,19 @@
-import { useActionState, useEffect, useRef, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import './AddTransaction.css';
 import txnFormAction from "./txnFormAction";
+import CustomInput from "./CustomInput/CustomInput";
 
 export interface TransactionFormState {
     status?: 'IDLE' | 'SUCCESS' | 'FAILED' | 'INVALID';
     message?: string;
+    enteredFields?:{
+        amount?:string;
+        description?:string;
+    }
 }
 
 function AddTransaction() {
-    const [formState, formAction, isPending] = useActionState<TransactionFormState, FormData>(txnFormAction, { status: 'IDLE', message: '' });
+    const [formState, formAction, isPending] = useActionState<TransactionFormState, FormData>(txnFormAction, { status: 'IDLE', message: '', enteredFields: {} });
     const [displayMessage, setDisplayMessage] = useState<string | undefined>(undefined);
 
     const handleInputChangeToClearMessage = () => {
@@ -38,28 +43,24 @@ function AddTransaction() {
                 className="add-transaction-container" 
             >
                 {displayMessage&& <p className="error-text">{displayMessage}</p>}
-                <div className="transaction-input-container">
-                    <label htmlFor="amount">Amount</label>
-
-                    <input
-                        id="amount"
-                        name="amount"
-                        type="number"
-                        step="0.01"
-                        placeholder="Enter the amount"
-                        required
-                    />
-                </div>
-
-                <div className="transaction-input-container">
-                    <label htmlFor="description">Short Description</label>
-                    <input
-                        id="description"
-                        name="description"
-                        type="text"
-                        placeholder="Enter the description"
-                    />
-                </div>
+                <CustomInput 
+                id="amount"
+                name="amount"
+                type="number"
+                step={0.01}
+                placeHolder="Enter the amount"
+                defaultValue={formState?.enteredFields?.amount}
+                required={true}
+                />
+                <CustomInput 
+                id="description"
+                name="description"
+                type="text"
+                step={undefined}
+                placeHolder="Enter the description"
+                defaultValue={formState?.enteredFields?.description}
+                required={false}
+                />
 
                 <button type="submit" disabled={isPending}>
                     {isPending ? "Adding..." : "Add Transaction"}

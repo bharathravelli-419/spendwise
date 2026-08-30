@@ -1,15 +1,19 @@
 import TransactionService from "../../api/transactionService";
 import type { TransactionFormState } from "./AddTransaction";
 
-const txnFormAction = async (prevState: TransactionFormState, formData: FormData): Promise<TransactionFormState> => {
+const txnFormAction = async (_prevState: TransactionFormState, formData: FormData): Promise<TransactionFormState> => {
 
     const amount = Number(formData.get("amount"));
-    const description = formData.get("description");
+    const description = formData.get("description") as string;
 
     if (!amount || isNaN(amount) || amount <=0 ) {
         return {
             status: 'INVALID',
-            message: 'INVALID AMOUNT'
+            message: 'INVALID AMOUNT',
+            enteredFields: {
+                amount: amount.toString(),
+                description
+            }
         }
     }
 
@@ -30,7 +34,11 @@ const txnFormAction = async (prevState: TransactionFormState, formData: FormData
     } catch (error) {
         return {
             status: 'FAILED',
-            message: 'FAILED TO ADD'
+            message: 'FAILED TO ADD',
+            enteredFields: {
+               amount: amount.toString(),
+               description
+            }
         }
     }
 }
