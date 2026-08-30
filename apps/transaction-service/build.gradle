@@ -84,9 +84,9 @@ dependencies {
 
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
+//tasks.named('test') {
+//	useJUnitPlatform()
+//}
 
 spotless{
   java { googleJavaFormat('1.23.0');
