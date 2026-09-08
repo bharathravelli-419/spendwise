@@ -14,7 +14,7 @@ const CustomInput= ({id ,name ,type ,step, placeHolder, defaultValue, required} 
     return (
         <>
         <div className="transaction-input-container">
-            <label htmlFor={name}>Amount</label>
+            <label htmlFor={name}>{name}</label>
 
             <input
                 id={id}
